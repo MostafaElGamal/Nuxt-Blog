@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1>Title of the Post</h1>
+      <h1>{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last Updated on</div>
-        <div class="post-detail">Wirtten by Desh</div>
+        <div class="post-detail">{{ loadedPost.updateDate }}</div>
+        <div class="post-detail">{{ loadedPost.author }}</div>
       </div>
-      <p class="post-content">Content of the post</p>
+      <p class="post-content">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>
@@ -17,7 +17,26 @@
   </div>
 </template>
 <script>
-export default {}
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(new Error(), {
+        loadedPost: {
+          id: '1',
+          // This is like this.$route.params.id
+          title: 'this is title (ID: ' + context.params.id + ')',
+          text: 'this is text',
+          author: 'Mustafa',
+          updateDate: new Date(),
+          content:
+            'asdasjfasdibgasdfiobgasduifbsdpodfasiodbhasfbha sjfasj fjvhd ilas djhas fjkdashi d',
+          thumbnail:
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4BDkL6J4W-cbvRZgYmf6r3tYNWyY3jhpIZbHQRv_LW9WkHt5a&s'
+        }
+      })
+    }, 1900)
+  }
+}
 </script>
 <style scoped>
 .single-post-page {
