@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheHeader @sidenavToggle=" displaySidenav = !displaySidenav" />
+    <TheHeader @sidenavToggle="displaySidenav = !displaySidenav" />
     <TheSidenav :show="displaySidenav" @close="displaySidenav = false" />
     <nuxt />
   </div>
@@ -9,6 +9,7 @@
 import TheHeader from '@/components/Navigation/TheHeader'
 import TheSidenav from '@/components/Navigation/TheSidenav'
 export default {
+  // middleware: 'log',
   components: {
     TheHeader,
     TheSidenav

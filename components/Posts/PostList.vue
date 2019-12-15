@@ -1,4 +1,4 @@
-<template >
+<template>
   <section class="featured-posts">
     <PostPreview
       v-for="post in posts"
@@ -6,7 +6,7 @@
       :id="post.id"
       :is-admin="isAdmin"
       :title="post.title"
-      :previewText="post.text"
+      :preview-text="post.previewText"
       :thumbnail="post.thumbnail"
     ></PostPreview>
   </section>

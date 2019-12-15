@@ -3,8 +3,8 @@
     <section class="post">
       <h1>{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">{{ loadedPost.updateDate }}</div>
         <div class="post-detail">{{ loadedPost.author }}</div>
+        <div class="post-detail">{{ loadedPost.updatedDate | date }}</div>
       </div>
       <p class="post-content">{{ loadedPost.content }}</p>
     </section>
@@ -17,24 +17,37 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(new Error(), {
-        loadedPost: {
-          id: '1',
-          // This is like this.$route.params.id
-          title: 'this is title (ID: ' + context.params.id + ')',
-          text: 'this is text',
-          author: 'Mustafa',
-          updateDate: new Date(),
-          content:
-            'asdasjfasdibgasdfiobgasduifbsdpodfasiodbhasfbha sjfasj fjvhd ilas djhas fjkdashi d',
-          thumbnail:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4BDkL6J4W-cbvRZgYmf6r3tYNWyY3jhpIZbHQRv_LW9WkHt5a&s'
+  asyncData(context) {
+    return context.app.$axios
+      .$get('/Nuxt-Blog/posts/' + context.params.id + '.json')
+      .then(res => {
+        return {
+          loadedPost: res
         }
       })
-    }, 1900)
+      .catch(error => {})
+  },
+  head() {
+    return {
+      title: this.loadedPost.title,
+      meta: [
+        {
+          charset: 'utf-8'
+        },
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1'
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.loadedPost.content
+        }
+      ]
+    }
   }
 }
 </script>
