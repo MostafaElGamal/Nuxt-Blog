@@ -1,6 +1,5 @@
 # Nuxt-Blog
 
-> My best Nuxt.js project
 > Build from the this course: https://www.udemy.com/course/build-web-apps-with-vuejs-firebase/ <--- "Thanks very much."
 
 ## Build Setup
