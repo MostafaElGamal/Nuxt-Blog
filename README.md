@@ -1,6 +1,6 @@
 # Nuxt-Blog
 
-> Build from the this course: https://www.udemy.com/course/build-web-apps-with-vuejs-firebase/ <--- "Thanks very much."
+> Build from the this course: https://www.udemy.com/course/nuxtjs-vuejs-on-steroids/ <--- "Thanks very much."
 
 ## Build Setup
 
